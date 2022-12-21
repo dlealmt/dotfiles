@@ -53,7 +53,8 @@
    (prog-mode . electric-pair-mode)
    (prog-mode . show-paren-mode)
    (prog-mode . +prog-set-fill-column)
-   (prog-mode . display-line-numbers-mode)))
+   (prog-mode . display-line-numbers-mode)
+   (emacs-startup . global-auto-revert-mode)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
