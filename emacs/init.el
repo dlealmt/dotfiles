@@ -86,5 +86,4 @@
 (require '+org)
 
 (dolist (file (directory-files +init-files-directory t "\\`\\+.*\\.el\\'"))
-  (+require (intern (file-name-base file))))
-
+  (require (intern (file-name-base file))))
