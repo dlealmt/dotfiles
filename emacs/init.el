@@ -63,7 +63,8 @@
    (prog-mode . display-line-numbers-mode)
    (emacs-startup . auto-save-visited-mode)
    (emacs-startup . auto-insert-mode)
-   (emacs-startup . global-auto-revert-mode)))
+   (emacs-startup . global-auto-revert-mode)
+   (emacs-startup . server-start)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
