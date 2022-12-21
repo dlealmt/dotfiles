@@ -43,6 +43,8 @@
   (password-cache-expiry 1500)
   (read-buffer-completion-ignore-case t)
   (read-file-name-completion-ignore-case t)
+  (recentf-save-file "~/config/emacs/cache/recentf")
+  (recentf-max-saved-items nil)
   (require-final-newline t)
   (resize-mini-frames nil)
   (ring-bell-function 'ignore)
@@ -64,6 +66,7 @@
    (emacs-startup . auto-save-visited-mode)
    (emacs-startup . auto-insert-mode)
    (emacs-startup . global-auto-revert-mode)
+   (emacs-startup . recentf-mode)
    (emacs-startup . server-start)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
