@@ -46,7 +46,14 @@
   (use-short-answers t)
   (visible-bell nil)
   (warning-minimum-level :error)
-  (warning-minimum-log-level :warning))
+  (warning-minimum-log-level :warning)
+
+  :hook
+  ((prog-mode . display-fill-column-indicator-mode)
+   (prog-mode . electric-pair-mode)
+   (prog-mode . show-paren-mode)
+   (prog-mode . +prog-set-fill-column)
+   (prog-mode . display-line-numbers-mode)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -55,3 +62,6 @@
 
 (dolist (file (directory-files +init-files-directory t "\\`\\+.*\\.el\\'"))
   (+require (intern (file-name-base file))))
+
+(defun +prog-set-fill-column ()
+  (setq-local fill-column 100))
