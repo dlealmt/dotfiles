@@ -61,6 +61,11 @@
   (warning-minimum-level :error)
   (warning-minimum-log-level :warning)
 
+  :custom-face
+  (default ((t (:background "#282420"))))
+  (fixed-pitch-serif ((t (:family "Cascadia Mono" :height 140))))
+  (variable-pitch ((t (:family "Noto Sans" :height 140))))
+
   :hook
   ((before-save . delete-trailing-whitespace)
    (prog-mode . display-fill-column-indicator-mode)
