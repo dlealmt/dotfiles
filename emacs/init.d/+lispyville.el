@@ -3,7 +3,7 @@
 (use-package lispyville
   :after lispy
 
-  :init
+  :config
   (add-to-list 'auto-insert-alist
                '(("\\+.*\\.el\\'" . "Emacs config file")
                  nil
