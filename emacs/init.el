@@ -16,6 +16,9 @@
   (setenv "PAGER" "cat")
   (setenv "NO_AT_BRIDGE" "1")
 
+  (defun +prog-set-fill-column ()
+    (setq-local fill-column 100))
+
   :custom
   (auth-sources '("~/.authinfo.gpg"))
   (auto-insert-alist nil)
@@ -80,5 +83,3 @@
 (dolist (file (directory-files +init-files-directory t "\\`\\+.*\\.el\\'"))
   (+require (intern (file-name-base file))))
 
-(defun +prog-set-fill-column ()
-  (setq-local fill-column 100))
