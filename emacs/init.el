@@ -8,6 +8,11 @@
   :ensure nil
   :no-require t
 
+  :preface
+  (setenv "UID" (number-to-string (user-uid)))
+  (setenv "PAGER" "cat")
+  (setenv "NO_AT_BRIDGE" "1")
+
   :custom
   (auth-sources '("~/.authinfo.gpg"))
   (blink-cursor-mode nil)
