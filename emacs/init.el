@@ -15,6 +15,7 @@
 
   :custom
   (auth-sources '("~/.authinfo.gpg"))
+  (auto-insert-alist nil)
   (blink-cursor-mode nil)
   (completion-ignore-case t)
   (cursor-type 'bar)
@@ -54,6 +55,7 @@
    (prog-mode . show-paren-mode)
    (prog-mode . +prog-set-fill-column)
    (prog-mode . display-line-numbers-mode)
+   (emacs-startup . auto-insert-mode)
    (emacs-startup . global-auto-revert-mode)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
