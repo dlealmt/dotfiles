@@ -21,4 +21,4 @@
   (:keymaps 'minitest-compilation-mode-map
    "gr" '(minitest-rerun :wk "rerun")))
 
-(provide '+ruby-minitest)
+(provide '+minitest)
