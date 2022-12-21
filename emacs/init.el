@@ -55,11 +55,13 @@
   (warning-minimum-log-level :warning)
 
   :hook
-  ((prog-mode . display-fill-column-indicator-mode)
+  ((before-save . delete-trailing-whitespace)
+   (prog-mode . display-fill-column-indicator-mode)
    (prog-mode . electric-pair-mode)
    (prog-mode . show-paren-mode)
    (prog-mode . +prog-set-fill-column)
    (prog-mode . display-line-numbers-mode)
+   (emacs-startup . auto-save-visited-mode)
    (emacs-startup . auto-insert-mode)
    (emacs-startup . global-auto-revert-mode)))
 
