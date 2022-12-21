@@ -4,6 +4,8 @@
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
+(use-package general)
+
 (use-package +core
   :ensure nil
   :no-require t

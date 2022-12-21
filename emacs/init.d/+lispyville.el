@@ -2,6 +2,7 @@
 
 (use-package lispyville
   :after lispy
+  :requires autoinsert
 
   :config
   (add-to-list 'auto-insert-alist
