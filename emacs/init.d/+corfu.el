@@ -14,7 +14,7 @@
   (corfu-separator ?\s)
 
   :hook
-  (corfu-mode . corfu-popupinfo-mode)
-  (emacs-startup . global-corfu-mode))
+  ((corfu-mode . corfu-popupinfo-mode)
+   (emacs-startup . global-corfu-mode)))
 
 (provide '+corfu)

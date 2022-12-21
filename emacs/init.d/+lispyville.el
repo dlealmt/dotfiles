@@ -29,7 +29,7 @@
    "geb" '("buffer" . eval-buffer))
 
   :hook
-  (emacs-lisp-mode . lispyville-mode)
-  (lisp-interaction-mode . lispyville-mode))
+  ((emacs-lisp-mode . lispyville-mode)
+   (lisp-interaction-mode . lispyville-mode)))
 
 (provide '+lispyville)
