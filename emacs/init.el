@@ -67,6 +67,7 @@
    (emacs-startup . auto-insert-mode)
    (emacs-startup . global-auto-revert-mode)
    (emacs-startup . recentf-mode)
+   (emacs-startup . savehist-mode)
    (emacs-startup . server-start)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
