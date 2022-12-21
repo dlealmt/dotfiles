@@ -7,6 +7,7 @@
 (use-package +core
   :ensure nil
   :no-require t
+  :requires xdg
 
   :preface
   (setenv "UID" (number-to-string (user-uid)))
@@ -20,6 +21,7 @@
   (completion-ignore-case t)
   (cursor-type 'bar)
   (custom-unlispify-remove-prefixes t)
+  (delete-by-moving-to-trash t)
   (display-buffer-base-action '((display-buffer-reuse-window
                                  display-buffer-same-window
                                  display-buffer-pop-up-frame)
@@ -35,14 +37,17 @@
   (initial-scratch-message nil)
   (minibuffer-message-clear-timeout 3)
   (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
+  (make-backup-files nil)
   (mode-line-format nil)
   (password-cache t)
   (password-cache-expiry 1500)
   (read-buffer-completion-ignore-case t)
   (read-file-name-completion-ignore-case t)
+  (require-final-newline t)
   (resize-mini-frames nil)
   (ring-bell-function 'ignore)
   (tab-always-indent 'complete)
+  (trash-directory (concat (xdg-data-home) "/Trash"))
   (use-dialog-box nil)
   (use-short-answers t)
   (visible-bell nil)
