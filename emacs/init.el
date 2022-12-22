@@ -9,7 +9,6 @@
 (use-package +core
   :ensure nil
   :no-require t
-  :requires xdg
 
   :preface
   (setenv "UID" (number-to-string (user-uid)))
