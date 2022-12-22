@@ -65,6 +65,39 @@
   (fixed-pitch-serif ((t (:family "Cascadia Mono" :height 140))))
   (variable-pitch ((t (:family "Noto Sans" :height 140))))
 
+  :general
+  (:states '(normal visual motion)
+   "SPC" '(nil :wk "global commands")
+   "Q"   nil
+   "g"   '(nil :wk "local commands")
+   "q"   nil)
+  (:states 'normal
+   "q"   'previous-buffer
+   "Q"   'kill-current-buffer
+   "gb"  '(nil :wk "buffer")
+   "gbv" '(revert-buffer :wk "revert")
+   "gbx" '(kill-this-buffer :wk "delete")
+   "gf"  '(nil :wk "file")
+   "gfd" '(dired :wk "dired")
+   "gff" '(find-file :wk "open")
+   "gfi" '(insert-file :wk "insert contents")
+   "gfr" '(rename-visited-file :wk "rename")
+   "gfo" '(read-only-mode :wk "toggle read only")
+   "gfv" '(revert-buffer :wk "revert")
+   "gfw" '(write-file :wk "save as")
+   "gfx" '(+files-delete-this-file :wk "delete")
+   "gl"  '(nil :wk "lint")
+   "gs"  '(save-buffer :wk "save"))
+  (:states 'normal
+   :prefix "SPC"
+   "SPC" '(execute-extended-command :wk "open")
+   "L"   '(+eshell :wk "eshell in $HOME")
+   "!"   '(project-async-shell-command :wk "run")
+   "*"   '(itchy-switch-to-scratch-buffer :wk "scratch buffer")
+   "d"   '(project-dired :wk "dired")
+   "l"   '(project-eshell :wk "shell")
+   "v"   '(magit-project-status :wk "vc"))
+
   :hook
   ((before-save . delete-trailing-whitespace)
    (prog-mode . display-fill-column-indicator-mode)
@@ -86,3 +119,18 @@
 
 (dolist (file (directory-files +init-files-directory t "\\`\\+.*\\.el\\'"))
   (require (intern (file-name-base file))))
+
+(defun +eshell ()
+  (interactive)
+  (let ((default-directory "~"))
+    (eshell)))
+
+(defun +files-delete-this-file ()
+  "Delete the file connected to the current buffer, if it exists."
+  (interactive)
+  (if-let ((victim (buffer-file-name)))
+      (progn
+        (kill-buffer)
+        (delete-file victim)
+        (message "%s moved to trash" victim))
+    (message "Buffer is not visiting a file")))
