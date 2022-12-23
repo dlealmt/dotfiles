@@ -18,6 +18,8 @@
   (defun +prog-set-fill-column ()
     (setq-local fill-column 100))
 
+  (require 'xdg)
+
   :custom
   (auth-sources '("~/.authinfo.gpg"))
   (auto-insert-alist nil)
