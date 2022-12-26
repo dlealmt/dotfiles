@@ -1,9 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package lispyville
-  :requires autoinsert
-
   :config
+  (require 'autoinsert)
+
   (add-to-list 'auto-insert-alist
                '(("\\+.*\\.el\\'" . "Emacs config file")
                  nil
