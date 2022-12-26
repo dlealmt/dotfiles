@@ -4,6 +4,8 @@
   :config
   (require 'autoinsert)
 
+  (lispyville-set-key-theme '(operators c-w c-u prettify additional-movement slurp/barf-lispy
+                              additional additional-insert escape insert))
   (add-to-list 'auto-insert-alist
                '(("\\+.*\\.el\\'" . "Emacs config file")
                  nil
@@ -22,14 +24,11 @@
   :general
   (:keymaps 'lispyville-mode-map
    :states 'normal
-   "<" 'lispyville-barf
-   "=" 'lispyville-prettify
-   ">" 'lispyville-slurp
    "ge"  '("eval" . nil)
-   "geb" '("buffer" . eval-buffer))
+   "geb" '("buffer" . eval-buffer)
+   ";"   'embark-act)
 
-  :hook
-  ((emacs-lisp-mode . lispyville-mode)
-   (lisp-interaction-mode . lispyville-mode)))
+  :hook ((emacs-lisp-mode . lispyville-mode)
+         (lisp-interaction-mode . lispyville-mode)))
 
 (provide '+lispyville)
