@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package lispyville
-  :after lispy
   :requires autoinsert
 
   :config
