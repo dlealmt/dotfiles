@@ -11,6 +11,7 @@
   :preface
   (setenv "UID" (number-to-string (user-uid)))
   (setenv "PAGER" "cat")
+  (setenv "GPG_AGENT_INFO" nil)
   (setenv "EDITOR" "emacsclient -c")
   (setenv "NO_AT_BRIDGE" "1")
 
