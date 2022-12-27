@@ -83,8 +83,7 @@
   (defvar +minibuffer-frame-min-pixel-height 44)
 
   (defun +minibuffer-enable-resize ()
-    (setq resize-mini-frames #'+minibuffer-resize-mini-frame)
-    (remove-hook 'minibuffer-setup-hook #'+minibuffer-enable-resize))
+    (setq resize-mini-frames #'+minibuffer-resize-mini-frame))
 
   (defun +minibuffer-disable-resize ()
     (setq resize-mini-frames nil))
@@ -93,7 +92,8 @@
     (setq default-minibuffer-frame
           (edie-bar-make-frame "_main-bar_" '((internal-border-width . 0)
                                               (minibuffer . only)
-                                              (window-system . x)))))
+                                              (window-system . x))))
+    (add-hook 'minibuffer-setup-hook #'+minibuffer-enable-resize))
 
   (defun +minibuffer-resize-mini-frame (frame)
     (when (not +minibuffer-frame-min-pixel-height)
