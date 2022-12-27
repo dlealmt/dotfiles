@@ -42,7 +42,7 @@
                         (mid . (:left (/ 1 10) :top 0 :width (/ 8 10) :height 1.0))
                         (right . (:left 0.5 :top 0 :width 0.5 :height 1.0))
                         (main-bar . (:left 0.25 :top 16 :width 0.5 :height 48
-                                           :workarea screen :desktop t :stacking above))))
+                                     :workarea screen :desktop t :stacking above))))
   (edie-wm-tile-commands '((fit focus-cycle) (left mid right) (:prefix +edie-)))
   (edie-wm-window-border-width 2)
   (edie-wm-window-margins 8)
