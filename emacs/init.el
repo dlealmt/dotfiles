@@ -106,6 +106,7 @@
    (prog-mode . show-paren-mode)
    (prog-mode . +prog-set-fill-column)
    (prog-mode . display-line-numbers-mode)
+   (emacs-startup . auth-source-pass-enable)
    (emacs-startup . auto-save-visited-mode)
    (emacs-startup . auto-insert-mode)
    (emacs-startup . global-auto-revert-mode)
