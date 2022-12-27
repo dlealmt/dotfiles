@@ -10,3 +10,4 @@
 /.gsd-keyboard.settings-ported
 /QtProject.conf
 /dconf/
+/openbox/*
