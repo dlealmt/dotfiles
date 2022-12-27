@@ -9,6 +9,21 @@
 
 (require 'edie)
 
+(use-package edie-keys
+  :ensure nil
+
+  :general
+  (:keymaps 'input-decode-map
+   [(control ?i)] [control-i]
+   [(control ?I)] [(shift control-i)])
+  (:keymaps 'edie-keys-mode-map
+   "s-;" 'edie-wm-window-close
+   "s-d" '+browse-url-new-window
+   "s-f" '+edie-make-frame
+   "s-s" '+edie-org)
+
+  :hook (after-init . edie-keys-mode))
+
 (use-package edie-wm
   :ensure nil
 
@@ -46,8 +61,10 @@
           (interactive)
           (edie-wm-window-to-desktop desktop)))
 
-      (keymap-global-set (concat "s-" name) switch)
-      (keymap-global-set (concat "C-s-" name) push-to)))
+      (keymap-set edie-keys-mode-map (concat "s-" name) switch)
+      (keymap-set edie-keys-mode-map
+                  (if (equal name "i") "s-<control-i>" (concat "C-s-" name))
+                  push-to)))
 
   :hook (emacs-startup . edie-wm-mode))
 
