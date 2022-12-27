@@ -69,7 +69,7 @@
 
   :general
   (:states '(normal visual motion)
-   "SPC" '(nil :wk "global commands")
+   "SPC" nil
    "Q"   nil
    "g"   '(nil :wk "local commands")
    "q"   nil)
