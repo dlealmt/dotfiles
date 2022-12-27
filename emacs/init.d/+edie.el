@@ -71,7 +71,7 @@
 (use-package edie-run
   :ensure nil
 
-  :hook (emacs-startup . edie-run-mode))
+  :hook (edie-wm-mode . edie-run-mode))
 
 (use-package edie-bar
   :ensure nil
