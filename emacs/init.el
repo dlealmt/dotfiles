@@ -124,7 +124,7 @@
 
 (defun +eshell ()
   (interactive)
-  (let ((default-directory "~"))
+  (let ((default-directory "~/"))
     (eshell)))
 
 (defun +files-delete-this-file ()
