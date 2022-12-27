@@ -71,7 +71,6 @@
   (:states '(normal visual motion)
    "SPC" nil
    "Q"   nil
-   "g"   '(nil :wk "local commands")
    "q"   nil)
   (:states 'normal
    "q"  'previous-buffer
