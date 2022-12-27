@@ -72,6 +72,10 @@
    "SPC" nil
    "Q"   nil
    "q"   nil)
+  (:keymaps 'dired-mode-map
+   :states 'normal
+   "SPC" nil
+   "Q"   nil)
   (:states 'normal
    "q"  'previous-buffer
    "Q"  'kill-current-buffer
