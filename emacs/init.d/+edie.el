@@ -7,7 +7,13 @@
 (require '+browse-url)
 (require '+secrets)
 
-(require 'edie)
+(use-package edie
+  :ensure nil
+
+  :ensure-system-package (picom . picom-git)
+
+  :custom
+  (edie-debug t))
 
 (use-package edie-keys
   :ensure nil
@@ -119,17 +125,6 @@
   (edie-redshift-longitude +secrets-edie-redshift-longitude)
 
   :hook (emacs-startup . edie-redshift-mode))
-
-(use-package edie
-  :ensure nil
-
-  :ensure-system-package (picom . picom-git)
-
-  :general
-  ("s-;" 'edie-wm-window-close
-   "s-d" '+browse-url-new-window
-   "s-f" '+edie-make-frame
-   "s-s" '+edie-org))
 
 (use-package edie-wallpaper
   :ensure nil
