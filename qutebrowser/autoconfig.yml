@@ -10,6 +10,7 @@ settings:
     global:
       normal:
         q: close
+        u: undo -w
   completion.shrink:
     global: true
   content.notifications.enabled:
