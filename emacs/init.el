@@ -13,6 +13,7 @@
   :preface
   (setenv "UID" (number-to-string (user-uid)))
   (setenv "PAGER" "cat")
+  (setenv "EDITOR" "emacsclient -c")
   (setenv "NO_AT_BRIDGE" "1")
 
   (defun +prog-set-fill-column ()
