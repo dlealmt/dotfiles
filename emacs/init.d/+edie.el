@@ -33,7 +33,7 @@
   (edie-wm-backend 'openbox)
   (edie-wm-default-desktop-list '("y" "u" "i" "o" "p"))
   (edie-wm-desktop-padding '(:left 40 :top 72 :bottom 8 :right 40))
-  (edie-wm-rules-alist `(((:class "Brave-browser") . (:tile mid))
+  (edie-wm-rules-alist `(((:class "qutebrowser") . (:tile mid))
                          ((:title "_main-bar_") . (:tile main-bar))))
   (edie-wm-tile-alist '((scratch . (:left 0.56 :top 0 :width 0.44 :height 1.0
                                     :workarea screen :stacking above
