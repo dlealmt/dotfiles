@@ -51,6 +51,7 @@
 (setopt use-package-always-ensure t
         use-package-verbose t)
 
+(use-package general)
 (use-package no-littering)
 
 (use-package doom-themes
