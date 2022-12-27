@@ -20,6 +20,7 @@
    "hl" '(helpful-command :wk "command")
    "hk" '(helpful-key :wk "key")
    "hm" '(woman :wk "man page")
+   "hM"  '(view-echo-area-messages :kw "messages")
    "ho" '(describe-mode :wk "mode")
    "hv" '(helpful-variable :wk "variable"))
   (:keymaps 'emabark-symbol-map
