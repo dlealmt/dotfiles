@@ -9,11 +9,11 @@
   :no-require t
 
   :preface
-  (setenv "UID" (number-to-string (user-uid)))
-  (setenv "PAGER" "cat")
   (setenv "GPG_AGENT_INFO" nil)
   (setenv "EDITOR" "emacsclient -c")
   (setenv "NO_AT_BRIDGE" "1")
+  (setenv "PAGER" "cat")
+  (setenv "UID" (number-to-string (user-uid)))
 
   (defun +prog-set-fill-column ()
     (setq-local fill-column 100))
@@ -74,12 +74,12 @@
    "g"   '(nil :wk "local commands")
    "q"   nil)
   (:states 'normal
-   "q"   'previous-buffer
-   "Q"   'kill-current-buffer
-   "gb"  '(nil :wk "buffer")
+   "q"  'previous-buffer
+   "Q"  'kill-current-buffer
+   "gb" '(nil :wk "buffer")
    "gbv" '(revert-buffer :wk "revert")
    "gbx" '(kill-this-buffer :wk "delete")
-   "gf"  '(nil :wk "file")
+   "gf" '(nil :wk "file")
    "gfd" '(dired :wk "dired")
    "gff" '(find-file :wk "open")
    "gfi" '(insert-file :wk "insert contents")
