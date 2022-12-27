@@ -26,7 +26,7 @@ settings:
       right: 8
       top: 8
   statusbar.show:
-    global: always
+    global: in-mode
   tabs.show:
     global: never
   tabs.tabs_are_windows:
