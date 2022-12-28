@@ -17,6 +17,7 @@
 
 (use-package edie-keys
   :ensure nil
+  :demand t
 
   :general
   (:keymaps 'input-decode-map
