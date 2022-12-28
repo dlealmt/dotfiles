@@ -13,7 +13,13 @@
   :ensure-system-package (picom . picom-git)
 
   :custom
-  (edie-debug t))
+  (edie-debug t)
+
+  :config
+  (edie-debug-instrument edie-wm-on-window-add
+                         edie-wm-on-window-remove
+                         edie-wm-on-window-update
+                         edie-wm-on-window-focus))
 
 (use-package edie-keys
   :ensure nil
