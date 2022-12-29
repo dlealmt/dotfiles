@@ -13,7 +13,7 @@
 
   :general
   (:states 'normal
-   "/"   '(consult-line :wk "search")
+   "?"   '(consult-line :wk "search")
    "glf" '(consult-flycheck :wk "flycheck issues")
    "gp"  '(consult-yank-pop :wk "yank pop")
    "gy"  '(consult-imenu :wk "imenu")
