@@ -10,7 +10,11 @@
    ";" 'embark-act)
   (:states 'insert
    "C-;" 'embark-act)
+  (:keymaps 'embark-general-map
+   "y" 'embark-copy-as-kill)
+  (:keymaps 'embark-expression-map
+   "x" 'kill-region)
   (:keymaps 'embark-symbol-map
-   "h" #'helpful-symbol))
+   "h" 'helpful-symbol))
 
 (provide '+embark)
