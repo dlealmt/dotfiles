@@ -31,18 +31,19 @@
   (edie-wallpaper-image-path "~/wallpapers")
   (edie-wm-backend 'openbox)
   (edie-wm-default-desktop-list '("y" "u" "i" "o" "p"))
-  (edie-wm-desktop-padding '(:left 40 :top 72 :bottom 8 :right 40))
+  (edie-wm-desktop-padding '(:left 36 :top 60 :bottom 12 :right 36))
   (edie-wm-rules-alist `(((:class "qutebrowser") . (:tile mid))
                          ((:title "_main-bar_") . (:desktop t :stacking above :width 1.0))))
   (edie-wm-tile-alist '((scratch . (:left 0.56 :top 0 :width 0.44 :height 1.0
-                                    :workarea screen :stacking above
+                                    :workarea screen
+                                    :stacking above
                                     :no-borders t :no-round-corners t))
                         (left . (:left 0 :top 0 :width 0.5 :height 1.0))
                         (mid . (:left (/ 1 10) :top 0 :width (/ 8 10) :height 1.0))
                         (right . (:left 0.5 :top 0 :width 0.5 :height 1.0))))
   (edie-wm-tile-commands '((fit focus-cycle) (left mid right) (:prefix +edie-)))
   (edie-wm-window-border-width 2)
-  (edie-wm-window-margins 8)
+  (edie-wm-window-margins 12)
 
   :general
   (:keymaps 'input-decode-map
