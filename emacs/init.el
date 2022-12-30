@@ -53,6 +53,7 @@
   (recentf-max-saved-items nil)
   (require-final-newline t)
   (resize-mini-frames nil)
+  (resize-mini-windows nil)
   (ring-bell-function 'ignore)
   (tab-always-indent 'complete)
   (trash-directory (concat (xdg-data-home) "/Trash"))
