@@ -9,58 +9,57 @@
 
 (use-package edie
   :ensure nil
+  :demand t
 
-  :ensure-system-package (picom . picom-git)
+  :ensure-system-package (openbox (picom . picom-git) redshift)
+
+  :preface
+  (defun +edie-make-default-minibuffer ()
+    (setq default-minibuffer-frame
+	  (edie-bar-make-bar '((font . "Ubuntu Mono-16")
+			       (left . 0)
+			       (height . (text-pixels . 48))
+			       (minibuffer . only)
+			       (name . "_main-bar_")
+			       (top . 0)
+			       (width . 1.0)))))
 
   :custom
   (edie-debug t)
-
-  :config
-  (edie-debug-instrument edie-wm-on-window-add
-                         edie-wm-on-window-remove
-                         edie-wm-on-window-update
-                         edie-wm-on-window-focus))
-
-(use-package edie-keys
-  :ensure nil
-  :demand t
-
-  :general
-  (:keymaps 'input-decode-map
-   [(control ?i)] [control-i]
-   [(control ?I)] [(shift control-i)])
-  (:keymaps 'edie-keys-mode-map
-   "s-;" 'edie-wm-window-close
-   "s-d" '+browse-url-new-window
-   "s-f" '+edie-make-frame
-   "s-s" '+edie-org)
-
-  :hook (after-init . edie-keys-mode))
-
-(use-package edie-wm
-  :ensure nil
-
-  :ensure-system-package openbox
-
-  :custom
+  (edie-redshift-latitude +secrets-edie-redshift-latitude)
+  (edie-redshift-longitude +secrets-edie-redshift-longitude)
+  (edie-wallpaper-image-path "~/wallpapers")
   (edie-wm-backend 'openbox)
   (edie-wm-default-desktop-list '("y" "u" "i" "o" "p"))
   (edie-wm-desktop-padding '(:left 40 :top 72 :bottom 8 :right 40))
   (edie-wm-rules-alist `(((:class "qutebrowser") . (:tile mid))
-                         ((:title "_main-bar_") . (:tile main-bar))))
+                         ((:title "_main-bar_") . (:desktop t :stacking above :width 1.0))))
   (edie-wm-tile-alist '((scratch . (:left 0.56 :top 0 :width 0.44 :height 1.0
                                     :workarea screen :stacking above
                                     :no-borders t :no-round-corners t))
                         (left . (:left 0 :top 0 :width 0.5 :height 1.0))
                         (mid . (:left (/ 1 10) :top 0 :width (/ 8 10) :height 1.0))
-                        (right . (:left 0.5 :top 0 :width 0.5 :height 1.0))
-                        (main-bar . (:left 0.25 :top 16 :width 0.5 :height 48
-                                     :workarea screen :desktop t :stacking above))))
+                        (right . (:left 0.5 :top 0 :width 0.5 :height 1.0))))
   (edie-wm-tile-commands '((fit focus-cycle) (left mid right) (:prefix +edie-)))
   (edie-wm-window-border-width 2)
   (edie-wm-window-margins 8)
 
+  :general
+  (:keymaps 'input-decode-map
+            [(control ?i)] [control-i]
+            [(control ?I)] [(shift control-i)])
+  (:keymaps 'edie-keys-mode-map
+            "s-;" 'edie-wm-window-close
+            "s-d" '+browse-url-new-window
+            "s-f" '+edie-make-frame
+            "s-s" '+edie-org)
+
   :config
+  (edie-debug-instrument edie-wm-on-window-add
+                         edie-wm-on-window-remove
+                         edie-wm-on-window-update
+                         edie-wm-on-window-focus)
+
   (pcase-dolist ((and desktop (seq 'desktop (map :name))) (edie-wm-desktop-list))
     (let ((switch (intern (concat "+edie-switch-to-desktop-" name)))
           (push-to (intern (concat "+edie-push-to-desktop-" name))))
@@ -79,71 +78,13 @@
                   (if (equal name "i") "s-<control-i>" (concat "C-s-" name))
                   push-to)))
 
-  :hook (emacs-startup . edie-wm-mode))
+  (pcase-dolist (`(,key . ,tile) '(("j" . left) ("k" . mid) ("l" . right)))
+    (pcase-dolist (`(,prefix . ,action) '(("s" . focus-cycle) ("C-s" . fit)))
+      (keymap-global-set (format "%s-%s" prefix key)
+                         (intern (format "+edie-%s-%s" action tile)))))
 
-(use-package edie-run
-  :ensure nil
-
-  :hook (edie-wm-mode . edie-run-mode))
-
-(use-package edie-bar
-  :ensure nil
-
-  :custom
-  (edie-bar-frame-spec '(edie-bar-clock))
-
-  :config
-  (defvar +minibuffer-frame-min-pixel-height 44)
-
-  (defun +minibuffer-enable-resize ()
-    (setq resize-mini-frames #'+minibuffer-resize-mini-frame))
-
-  (defun +minibuffer-disable-resize ()
-    (setq resize-mini-frames nil))
-
-  (defun +minibuffer-setup ()
-    (setq default-minibuffer-frame
-          (edie-bar-make-frame "_main-bar_" '((internal-border-width . 0)
-                                              (minibuffer . only)
-                                              (window-system . x))))
-    (add-hook 'minibuffer-setup-hook #'+minibuffer-enable-resize))
-
-  (defun +minibuffer-resize-mini-frame (frame)
-    (when (not +minibuffer-frame-min-pixel-height)
-      (setq +minibuffer-frame-min-pixel-height
-            (- (frame-pixel-height frame) (* 2 (frame-parameter frame 'internal-border-width)))))
-
-    (pcase-let* ((window (minibuffer-window frame))
-                 (buffer (window-buffer window))
-                 (`(,_ . ,height) (buffer-text-pixel-size buffer window))
-                 (next-height (max height +minibuffer-frame-min-pixel-height)))
-      (set-frame-height frame next-height nil t)))
-
-  :hook ((before-init . +minibuffer-setup)
-         (edie-wm-mode . edie-bar-mode)))
-
-(use-package edie-redshift
-  :ensure nil
-
-  :ensure-system-package redshift
-
-  :custom
-  (edie-redshift-latitude +secrets-edie-redshift-latitude)
-  (edie-redshift-longitude +secrets-edie-redshift-longitude)
-
-  :hook (emacs-startup . edie-redshift-mode))
-
-(use-package edie-wallpaper
-  :ensure nil
-
-  :ensure-system-package nitrogen
-
-  :hook (before-init . edie-wallpaper-mode))
-
-(pcase-dolist (`(,key . ,tile) '(("j" . left) ("k" . mid) ("l" . right)))
-  (pcase-dolist (`(,prefix . ,action) '(("s" . focus-cycle) ("C-s" . fit)))
-    (keymap-global-set (format "%s-%s" prefix key)
-                       (intern (format "+edie-%s-%s" action tile)))))
+  :hook ((before-init . +edie-make-default-minibuffer)
+	 (before-init . edie-mode)))
 
 (defun +edie-make-frame ()
   (interactive)
