@@ -11,8 +11,11 @@
                  nil
                  ";; -*- lexical-binding: t; -*-" n
                  n
-                 "(require '+config)" n
-                 n
+                 "(use-package " (thread-last
+                                   buffer-file-name
+                                   (file-name-nondirectory)
+                                   (file-name-sans-extension))
+                 ")"
                  - n
                  n
                  "(provide '" (thread-last
