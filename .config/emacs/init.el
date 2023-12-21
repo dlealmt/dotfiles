@@ -783,8 +783,6 @@
       (async-shell-command "direnv exec . foreman start -f Procfile.dev"
                            (format "*%s: servers*" (project-name (project-current))))))
 
-  (add-function :after after-focus-change-function #'+scratch-update-directory)
-
   :general
   (leader-def
     "xs" '(+servers :wk "servers"))
