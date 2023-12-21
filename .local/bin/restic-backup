@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source $HOME/.config/secrets/restic.bash
+
+restic unlock
+
+restic backup $HOME \
+  --exclude "$HOME/.cache/**" \
+  --exclude "$HOME/ar/installs/**" \
+  --exclude "$HOME/ar/build/**" \
+  --exclude "$HOME/ar/packages/*" \
+  --tag scheduled
+
+restic check --with-cache --read-data-subset=5G
+
+restic forget --prune --keep-hourly 24 --keep-daily 30 --keep-monthly 6 --keep-weekly 4 --keep-yearly 3
