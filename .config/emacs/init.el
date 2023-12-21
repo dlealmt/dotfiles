@@ -809,3 +809,8 @@
 
 (use-package gptel
   :ensure t)
+
+(use-package dired
+  :general
+  (no-def 'dired-mode-map
+    "SPC" '(+leader-prefix-command :wk "leader prefix")))
