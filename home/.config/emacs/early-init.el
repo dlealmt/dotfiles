@@ -29,23 +29,16 @@
   :init
   (load-theme 'gruvbox-dark-hard))
 
-(use-package menu-bar
-  :custom
-  (menu-bar-mode nil))
-
-(use-package scroll-bar
-  :custom
-  (scroll-bar-mode nil))
-
-(use-package tool-bar
-  :custom
-  (tool-bar-mode nil))
-
 (use-package emacs
+  :no-require t
+
   :custom
   (default-frame-alist '((background-color . "#1b1b1b")
                          (internal-border-width . 16)
                          (left-fringe . 28)
                          (line-spacing . 0.1)
                          (right-fringe . 16)
-                         (undecorated . t))))
+                         (undecorated . t)))
+  (menu-bar-mode nil)
+  (scroll-bar-mode nil)
+  (tool-bar-mode nil))
