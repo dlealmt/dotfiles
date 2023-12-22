@@ -695,9 +695,9 @@
 
   :general
   (inno-def 'with-editor-mode-map
-   "C-s" '(with-editor-finish :wk "finish"))
+    "C-s" '(with-editor-finish :wk "finish"))
   (no-def 'with-editor-mode-map
-   "q" '(with-editor-cancel :wk "cancel")))
+    "q" '(with-editor-cancel :wk "cancel")))
 
 (use-package ruby-ts-mode
   :preface
