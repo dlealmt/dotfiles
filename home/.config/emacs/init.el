@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+(setq custom-file "/dev/null")
+
 (use-package envrc
   :ensure t
 
@@ -42,7 +44,6 @@
   :no-require t
 
   :custom
-  (auto-revert-verbose nil)
   (auth-sources '("~/.config/secrets/authinfo.gpg"))
   (auto-save-visited-mode t)
   (blink-cursor-mode nil)
@@ -54,7 +55,6 @@
                                 (reusable-frames . t)))
   (enable-recursive-minibuffers t)
   (frame-resize-pixelwise t)
-  (global-auto-revert-non-file-buffers t)
   (header-line-format
    `((:eval (nerd-icons-icon-for-buffer))
      " "
@@ -78,7 +78,6 @@
   (inhibit-startup-screen t)
   (initial-buffer-choice t)
   (initial-scratch-message nil)
-  (left-fringe-width 16)
   (major-mode-remap-alist '((html-mode . html-ts.mode)
                             (json-mode . json-ts-mode)
                             (ruby-mode . ruby-ts-mode)
@@ -98,12 +97,8 @@
   (native-comp-async-report-warnings-errors 'silent)
   (native-compile-prune-cache t)
   (package-native-compile t)
-  (package-quickstart t)
-  (right-fringe-width 16)
   (ring-bell-function 'ignore)
   (save-place-mode t)
-  (scroll-bar-mode nil)
-  (tool-bar-mode nil)
   (use-dialog-box nil)
   (use-file-dialog nil)
   (use-short-answers t)
@@ -156,7 +151,6 @@
                     (reusable-frames . t))))
 
   :hook
-  (emacs-startup . global-auto-revert-mode)
   (before-save . delete-trailing-whitespace)
   (minibuffer-setup . cursor-intangible-mode))
 
@@ -359,7 +353,7 @@
   :ensure t
 
   :custom
-  (which-key-idle-delay 0.1)
+  (which-key-idle-delay 1.0)
 
   :hook emacs-startup)
 
@@ -785,10 +779,7 @@
 
   :general
   (leader-def
-    "xs" '(+servers :wk "servers"))
-
-  :hook
-  (window-state-change . +scratch-update-directory))
+    "xs" '(+servers :wk "servers")))
 
 (use-package shrface
   :ensure t
@@ -814,3 +805,16 @@
   :general
   (no-def 'dired-mode-map
     "SPC" '(+leader-prefix-command :wk "leader prefix")))
+
+(use-package vc-annotate
+  :general
+  (leader-def
+    "va" '(vc-annotate :wk "annotate")))
+
+(use-package autorevert
+  :custom
+  (auto-revert-verbose nil)
+  (global-auto-revert-non-file-buffers t)
+
+  :hook
+  (emacs-startup . global-auto-revert-mode))
