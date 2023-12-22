@@ -83,7 +83,6 @@
                             (ruby-mode . ruby-ts-mode)
                             (yaml-mode . yaml-ts-mode)))
   (make-backup-files nil)
-  (menu-bar-mode nil)
   (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
   (mode-line-format '(""
                       mode-line-format-right-align
