@@ -65,7 +65,7 @@
                                                                 (directory-file-name)
                                                                 (file-name-nondirectory))))
                                     face
-                                    (:foreground "#887a6e")))
+                                    (:foreground "#b8bb26")))
      (vc-mode (:propertize "  " face (:foreground "#3c3836")))
      (vc-mode (:propertize (" " (:eval (magit-get-current-branch))) face (:foreground "#8ec07c")))
      (:eval (when-let ((project (project-current))
