@@ -134,6 +134,7 @@
     "fr" '(revert-buffer-quick :wk "revert")
     "fs" '(write-file :wk "save as")
     "ge" '(flymake-goto-next-error :wk "next error")
+    "he" '(view-echo-area-messages :wk "mode")
     "hm" '(describe-mode :wk "mode")
     "nn" '(make-frame-command :wk "new frame")
     "xx" '(async-shell-command :wk "shell command"))
