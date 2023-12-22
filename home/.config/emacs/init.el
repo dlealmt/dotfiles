@@ -134,7 +134,9 @@
     "fr" '(revert-buffer-quick :wk "revert")
     "fs" '(write-file :wk "save as")
     "ge" '(flymake-goto-next-error :wk "next error")
+    "hc" '(describe-face :wk "face")
     "he" '(view-echo-area-messages :wk "mode")
+    "hi" '(info :wk "info")
     "hm" '(describe-mode :wk "mode")
     "nn" '(make-frame-command :wk "new frame")
     "xx" '(async-shell-command :wk "shell command"))
@@ -323,9 +325,7 @@
   (no-def 'helpful-mode-map
     "q" '(kill-this-buffer :wk "quit"))
   (leader-def
-    "hc" '(describe-face :wk "face")
     "hf" '(helpful-callable :wk "callable")
-    "hi" '(info :wk "info")
     "hk" '(helpful-key :key "key")
     "hv" '(helpful-variable :wk "variable"))
 
