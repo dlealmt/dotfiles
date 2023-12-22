@@ -72,8 +72,7 @@
                        (buffer-file-name))
               (concat
                (propertize "  " 'face '(:foreground "#3c3836"))
-               (propertize (concat " " (project-name project)) 'face '(:foreground "#83a598")))))
-     ))
+               (propertize (concat " " (project-name project)) 'face '(:foreground "#83a598")))))))
   (indent-tabs-mode nil)
   (inhibit-startup-screen t)
   (initial-buffer-choice t)
