@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq custom-file "/dev/null")
+(setq custom-file "/tmp/custom.el")
 
 (use-package envrc
   :ensure t
