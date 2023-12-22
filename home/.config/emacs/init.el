@@ -315,20 +315,11 @@
   :ensure t
 
   :general
-  (:keymaps 'embark-command-map
+  (:keymaps '(embark-command-map embark-file-map embark-function-map embark-general-map
+              embark-library-map embark-variable-map)
     "h" '(helpful-symbol :wk "symbol"))
   (:keymaps 'embark-expression-map
     "=" '(indent-region :wk "indent region"))
-  (:keymaps 'embark-file-map
-    "h" '(helpful-symbol :wk "symbol"))
-  (:keymaps 'embark-function-map
-    "h" '(helpful-symbol :wk "symbol"))
-  (:keymaps 'embark-general-map
-    "h" '(helpful-symbol :wk "symbol"))
-  (:keymaps 'embark-library-map
-    "h" '(helpful-symbol :wk "symbol"))
-  (:keymaps 'embark-variable-map
-    "h" '(helpful-symbol :wk "symbol"))
   (no-def 'helpful-mode-map
     "q" '(kill-this-buffer :wk "quit"))
   (leader-def
