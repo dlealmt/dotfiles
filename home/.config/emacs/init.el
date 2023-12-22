@@ -756,10 +756,6 @@
   :ensure t)
 
 (use-package project
-  :general
-  (leader-def
-    "xh" '(project-eshell :wk "shell"))
-
   :config
   (defun +servers ()
     (interactive)
@@ -769,6 +765,7 @@
 
   :general
   (leader-def
+    "xh" '(project-eshell :wk "shell")
     "xs" '(+servers :wk "servers")))
 
 (use-package shrface
