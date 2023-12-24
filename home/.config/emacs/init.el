@@ -597,7 +597,7 @@
   (diff-refine-removed ((t (:background "#cc241d" :foreground "#f9e5d7")))))
 
 (use-package pulsar
-  :ensure t
+  :load-path "/usr/local/pkgs/emacs-pkgs/pulsar"
 
   :config
   (add-to-list 'pulsar-pulse-functions #'evil-jump-backward)
