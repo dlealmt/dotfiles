@@ -8,9 +8,6 @@
   :hook
   (emacs-startup . envrc-global-mode))
 
-(use-package server
-  :hook emacs-startup)
-
 (use-package general
   :ensure t
 
