@@ -184,6 +184,12 @@
   :hook
   (evil-mode . evil-collection-init))
 
+(use-package recentf
+  :custom
+  (recentf-filename-handlers nil)
+
+  :hook emacs-startup)
+
 (use-package vertico
   :ensure t
 
@@ -364,11 +370,6 @@
   :custom
   (savehist-mode t))
 
-(use-package recentf
-  :custom
-  (recentf-filename-handlers nil)
-
-  :hook emacs-startup)
 
 (use-package lsp-mode
   :ensure t
