@@ -720,35 +720,6 @@
   :hook
   (ruby-ts-mode . +ruby-set-compile-command))
 
-(use-package prescient
-  :ensure t
-
-  :custom
-  (prescient-completion-highlight-matches t)
-  (prescient-filter-method '(prefix literal regexp))
-  (prescient-history-length 1024)
-
-  :hook
-  (emacs-startup . prescient-persist-mode))
-
-(use-package corfu-prescient
-  :ensure t
-
-  :custom
-  (corfu-prescient-enable-sorting t)
-
-  :hook
-  (corfu-mode . corfu-prescient-mode))
-
-(use-package vertico-prescient
-  :ensure t
-
-  :custom
-  (vertico-prescient-enable-sorting t)
-
-  :hook
-  (vertico-mode . vertico-prescient-mode))
-
 (use-package wgrep
   :ensure t)
 
