@@ -188,7 +188,9 @@
   :custom
   (recentf-filename-handlers nil)
 
-  :hook emacs-startup)
+  :config
+  (recentf-mode 1))
+
 
 (use-package vertico
   :ensure t
