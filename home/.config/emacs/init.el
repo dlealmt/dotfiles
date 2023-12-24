@@ -805,3 +805,9 @@
 
   :hook
   (emacs-startup . global-auto-revert-mode))
+
+(use-package org-modern
+  :load-path "/usr/local/pkgs/emacs-pkgs/org-modern"
+
+  :hook
+  (org-mode . org-modern-mode))
