@@ -276,7 +276,10 @@
   :ensure t)
 
 (use-package orderless
-  :ensure t)
+  :ensure t
+
+  :custom
+  (completion-styles '(orderless basic partial-completion emacs22)))
 
 (use-package marginalia
   :ensure t
