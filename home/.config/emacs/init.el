@@ -191,6 +191,18 @@
   :config
   (recentf-mode 1))
 
+(use-package embark
+  :ensure t
+
+  :custom
+  (embark-verbose-indicator-display-action
+   '(display-buffer-in-side-window (side . bottom)))
+
+  :general
+  (:states '(normal visual)
+   ";" '(embark-act :wk "embark"))
+  (:states 'insert
+   "C-;" '(embark-act :wk "embark")))
 
 (use-package vertico
   :ensure t
@@ -259,19 +271,6 @@
           :action (lambda (file)
                     (let ((root (consult--project-root)))
                       (pop-to-buffer (find-file-noselect file)))))))
-
-(use-package embark
-  :ensure t
-
-  :custom
-  (embark-verbose-indicator-display-action
-   '(display-buffer-in-side-window (side . bottom)))
-
-  :general
-  (:states 'normal
-   ";" '(embark-act :wk "embark"))
-  (:states 'insert
-   "C-;" '(embark-act :wk "embark")))
 
 (use-package embark-consult
   :ensure t)
