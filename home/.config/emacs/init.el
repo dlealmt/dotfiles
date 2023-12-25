@@ -678,15 +678,15 @@
   :mode
   ("\\.html.erb\\'" . html-ts-mode))
 
-(use-package indent-bars
-  :vc (:url "https://github.com/jdtsmith/indent-bars")
-  :ensure t
-
-  :custom
-  (indent-bars-display-on-blank-lines t)
-
-  :hook
-  ((prog-mode yaml-ts-mode) . indent-bars-mode))
+;; (use-package indent-bars
+;;   :vc (:url "https://github.com/jdtsmith/indent-bars")
+;;   :ensure t
+;;
+;;   :custom
+;;   (indent-bars-display-on-blank-lines t)
+;;
+;;   :hook
+;;   ((prog-mode yaml-ts-mode) . indent-bars-mode))
 
 (use-package subword
   :hook
