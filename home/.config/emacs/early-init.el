@@ -23,7 +23,7 @@
   (mode-line-active ((t (:background "#282828"))))
   (mode-line-inactive ((t (:background "#282828" :box (:line-width 8 :color "#282828")))))
 
-  :init
+  :config
   (load-theme 'gruvbox-dark-hard))
 
 (use-package emacs
