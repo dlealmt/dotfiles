@@ -8,9 +8,6 @@
 
 (setq use-package-always-demand t)
 
-(add-to-list 'default-frame-alist '(background-color . "#1b1b1b"))
-(add-to-list 'initial-frame-alist '(background-color . "#1b1b1b"))
-
 (use-package gruvbox-theme
   :ensure t
 
@@ -33,12 +30,16 @@
   :no-require t
 
   :custom
-  (default-frame-alist '((background-color . "#1b1b1b")
-                         (internal-border-width . 16)
-                         (left-fringe . 28)
-                         (line-spacing . 0.1)
-                         (right-fringe . 16)
-                         (undecorated . t)))
   (menu-bar-mode nil)
   (scroll-bar-mode nil)
-  (tool-bar-mode nil))
+  (tool-bar-mode nil)
+
+  :config
+  (add-to-list 'initial-frame-alist '(background-color . "#1b1b1b"))
+
+  (add-to-list 'default-frame-alist '(background-color . "#1b1b1b"))
+  (add-to-list 'default-frame-alist '(internal-border-width . 16))
+  (add-to-list 'default-frame-alist '(left-fringe . 28))
+  (add-to-list 'default-frame-alist '(line-spacing . 0.1))
+  (add-to-list 'default-frame-alist '(right-fringe . 16))
+  (add-to-list 'default-frame-alist '(undecorated . t)))
