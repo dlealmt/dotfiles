@@ -31,6 +31,8 @@
 
   :custom
   (menu-bar-mode nil)
+  (gc-cons-threshold 100000000)
+  (read-process-output-max (* 1024 1024))
   (scroll-bar-mode nil)
   (tool-bar-mode nil)
 
