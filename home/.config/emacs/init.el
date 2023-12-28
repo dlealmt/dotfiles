@@ -252,7 +252,7 @@
     "gE"  '(consult-flymake :wk "document symbols"))
   (leader-def
     "/"  '(consult-ripgrep :wk "search in project")
-    "bb" '(consult-buffer :wk "open")
+    "jJ" '(consult-buffer :wk "open buffer")
     "jj" '(consult-project-buffer :wk "open in project")
     "js" '(consult-imenu :wk "document symbols")
     "hM" '(consult-man :wk "man"))
