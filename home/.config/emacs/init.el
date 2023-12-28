@@ -247,7 +247,7 @@
   (xref-show-definitions-function #'consult-xref)
 
   :general
-  (:states 'normal
+  (no-def
     "C-/" '(consult-line :wk "consult line")
     "gE"  '(consult-flymake :wk "document symbols"))
   (leader-def
