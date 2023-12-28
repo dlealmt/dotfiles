@@ -36,6 +36,7 @@
     "h" '(nil :wk "help")
     "j" '(nil :wk "jump")
     "n" '(nil :wk "new")
+    "t" '(nil :wk "test")
     "v" '(nil :wk "vc")
     "x" '(nil :wk "run")))
 
