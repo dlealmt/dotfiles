@@ -139,7 +139,8 @@
     "hi" '(info :wk "info")
     "hm" '(describe-mode :wk "mode")
     "nn" '(make-frame-command :wk "new frame")
-    "xx" '(async-shell-command :wk "shell command"))
+    "xX" '(async-shell-command :wk "shell command")
+    "xx" '(project-async-shell-command :wk "shell command"))
   (no-def 'Info-mode-map
     "q" '(delete-frame :wk "quit"))
 
