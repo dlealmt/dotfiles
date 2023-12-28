@@ -718,8 +718,13 @@
     :keymaps 'ruby-ts-mode-map
     "eb" '(ruby-send-buffer :wk "buffer")
     "ed" '(ruby-send-definition :wk "definition")
-    "el" '(ruby-send-line :wk "line")
-    "xt" '(project-compile :wk "test"))
+    "el" '(ruby-send-line :wk "line"))
+  (leader-def
+    :keymaps 'ruby-ts-mode-map
+    "jj" '(+rails-multi :wk "jump")
+    "ta" '(+rails-test-run-all :wk "all")
+    "tr" '(recompile :wk "re-run")
+    "tt" '(+rails-test-run-file :wk "file"))
   (leader-def
     :keymaps 'ruby-ts-mode-map
     :states 'visual
