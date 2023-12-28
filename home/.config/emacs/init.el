@@ -243,6 +243,7 @@
   (consult-project-buffer-sources '(consult--source-project-buffer
                                     consult--source-project-recent-file
                                     +consult-source-project-files))
+  (consult-preview-key '(:debounce 0.5 any))
   (xref-show-xrefs-function #'consult-xref)
   (xref-show-definitions-function #'consult-xref)
 
