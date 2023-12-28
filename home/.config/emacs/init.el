@@ -2,6 +2,8 @@
 
 (setq custom-file "/tmp/custom.el")
 
+(setenv "GPG_AGENT_INFO" nil)
+
 (use-package envrc
   :ensure t
 
@@ -784,3 +786,7 @@
 
   :hook
   (org-mode . org-modern-mode))
+
+(use-package epg-config
+  :custom
+  (epg-pinentry-mode 'loopback))
