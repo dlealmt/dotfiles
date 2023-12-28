@@ -387,7 +387,7 @@
   (lsp-headerline-breadcrumb-enable nil)
 
   :hook
-  (prog-mode . lsp-deferred))
+  ((prog-mode yaml-mode) . lsp-deferred))
 
 (use-package rainbow-mode
   :ensure t
