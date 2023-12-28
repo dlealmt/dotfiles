@@ -716,7 +716,6 @@
   :general
   (leader-def
     :keymaps 'ruby-ts-mode-map
-    :states 'normal
     "eb" '(ruby-send-buffer :wk "buffer")
     "ed" '(ruby-send-definition :wk "definition")
     "el" '(ruby-send-line :wk "line")
