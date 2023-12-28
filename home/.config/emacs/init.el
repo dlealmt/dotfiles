@@ -789,6 +789,18 @@
   :hook
   (org-mode . org-modern-mode))
 
+(use-package smerge-mode
+  :general
+  (leader-def
+    :keymaps 'smerge-mode-map
+    "vc" '(nil :wk "smerge")
+    "vca" '(smerge-keep-all :wk "keep all")
+    "vcb" '(smerge-keep-base :wk "keep base")
+    "vce" '(smerge-ediff :wk "ediff")
+    "vcl" '(smerge-keep-lower :wk "keep lower")
+    "vct" '(smerge-keep-current :wk "keep current")
+    "vcu" '(smerge-keep-upper :wk "keep upper")))
+
 (use-package epg-config
   :custom
   (epg-pinentry-mode 'loopback))
