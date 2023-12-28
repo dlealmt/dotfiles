@@ -321,8 +321,7 @@
                '("\\(magit\\|magit-.*\\):"
                  . ((display-buffer-reuse-window
                      display-buffer-reuse-mode-window
-                     display-buffer-pop-up-frame)
-                    (dedicated . t)
+                     display-buffer-same-window)
                     (reusable-frames . t)))))
 
 (use-package helpful
