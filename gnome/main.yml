@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: "gnome: install"
+      become: true
+      package:
+        name:
+          - gnome
+          - gnome-browser-connector
+          - gnome-extra
+        reason: explicit
+        state: latest
+
+    - name: "gnome: copy files"
+      become: true
+      copy:
+        src: custom.conf
+        dest: /etc/gdm/custom.conf
