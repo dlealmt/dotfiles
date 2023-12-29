@@ -706,13 +706,6 @@
     "q" '(with-editor-cancel :wk "cancel")))
 
 (use-package ruby-ts-mode
-  :preface
-  (defun +ruby-set-compile-command ()
-    (when (and buffer-file-name (string-suffix-p "_test.rb" buffer-file-name))
-      (setq-local compilation-read-command nil)
-      (setq-local compile-command
-                  (concat "rails test " (expand-file-name buffer-file-name (project-root (project-current)))))))
-
   :general
   (leader-def
     :keymaps 'ruby-ts-mode-map
@@ -728,10 +721,7 @@
   (leader-def
     :keymaps 'ruby-ts-mode-map
     :states 'visual
-    "er" '(ruby-send-region :wk "region"))
-
-  :hook
-  (ruby-ts-mode . +ruby-set-compile-command))
+    "er" '(ruby-send-region :wk "region")))
 
 (use-package wgrep
   :ensure t)
