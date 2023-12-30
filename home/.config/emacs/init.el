@@ -603,7 +603,7 @@
   (diff-refine-removed ((t (:background "#cc241d" :foreground "#f9e5d7")))))
 
 (use-package pulsar
-  :load-path "/usr/local/pkgs/emacs-pkgs/pulsar"
+  :ensure t
 
   :config
   (add-to-list 'pulsar-pulse-functions #'evil-jump-backward)
@@ -778,7 +778,7 @@
   (emacs-startup . global-auto-revert-mode))
 
 (use-package org-modern
-  :load-path "/usr/local/pkgs/emacs-pkgs/org-modern"
+  :ensure t
 
   :hook
   (org-mode . org-modern-mode))

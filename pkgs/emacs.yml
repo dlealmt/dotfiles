@@ -4,7 +4,6 @@
     src_dir: "/usr/local/src/emacs"
     pkgs_dir: "/usr/local/pkgs"
     install_dir: "{{ pkgs_dir }}/emacs"
-    lib_dir: "{{ install_dir }}/emacs-pkgs"
 
   tasks:
     - name: "emacs: cloning"
@@ -48,14 +47,3 @@
       command: "stow emacs"
       args:
         chdir: "{{ pkgs_dir }}"
-
-    - name: "emacs: install lisp packages"
-      loop:
-        - name: org-modern
-          repo: https://github.com/minad/org-modern.git
-        - name: pulsar
-          repo: https://github.com/protesilaos/pulsar.git
-      git:
-        repo: "{{ item.repo }}"
-        dest: "{{ lib_dir }}/{{ item.name }}"
-        clone: true
