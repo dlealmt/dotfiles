@@ -378,7 +378,6 @@
   :custom
   (savehist-mode t))
 
-
 (use-package lsp-mode
   :ensure t
 
