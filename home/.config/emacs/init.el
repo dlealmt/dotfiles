@@ -527,15 +527,6 @@
   (emacs-startup . nerd-icons-completion-mode)
   (marginalia-mode . nerd-icons-completion-marginalia-setup))
 
-(use-package unicode-fonts
-  :ensure t
-
-  :custom
-  (unicode-fonts-skip-font-groups nil)
-
-  :hook
-  (emacs-startup . unicode-fonts-setup))
-
 (use-package display-line-numbers
   :custom-face
   (line-number ((t (:background nil))))
