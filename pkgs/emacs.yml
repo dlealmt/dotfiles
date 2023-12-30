@@ -42,8 +42,3 @@
       community.general.make:
         chdir: "{{ src_dir }}"
         target: install
-
-    - name: "emacs: stow"
-      command: "stow emacs"
-      args:
-        chdir: "{{ pkgs_dir }}"
