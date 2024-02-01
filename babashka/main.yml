@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: "babashka: download"
+      get_url:
+        url: https://raw.githubusercontent.com/babashka/babashka/master/install
+        mode: '700'
+        dest: /tmp/babashka_install
+
+    - name: "babashka: install"
+      command: /tmp/babashka_install

@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  become: true
+
+  tasks:
+    - name: "keyd: packages"
+      package:
+        name: keyd
+        state: present
+
+    - name: "keyd: config"
+      file:
+        path: /etc/keyd
+        state: directory
+
+    - name: "keyd: config"
+      copy:
+        src: default.conf
+        dest: /etc/keyd/default.conf
+
+    - name: "keyd: unit"
+      systemd_service:
+        name: keyd
+        enabled: true
+        state: restarted

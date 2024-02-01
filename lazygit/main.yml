@@ -1,0 +1,13 @@
+---
+- name: Lazygit
+  hosts: localhost
+  vars:
+    package_dir: "{{ ansible_env.HOME }}/.local/packages"
+    src_dir: "{{ ansible_env.HOME }}/.local/src"
+    dest_dir: "{{ ansible_env.HOME }}/.local"
+  tasks:
+    - name: "Lazygit: config"
+      ansible.builtin.file:
+        src: "{{ ansible_env.HOME }}/sys/lazygit/files"
+        dest: "{{ ansible_env.HOME }}/.config/lazygit"
+        state: link

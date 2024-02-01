@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  become: true
+
+  tasks:
+    - name: "tuxedo: repo key"
+      rpm_key:
+        key: "https://rpm.tuxedocomputers.com/opensuse/15.5/0x54840598.pub.asc"
+        state: present
+
+    - name: "tuxedo: repo"
+      community.general.zypper_repository:
+        repo: "https://rpm.tuxedocomputers.com/opensuse/15.5/repo-tuxedo-computers.repo"
+        runrefresh: true
+        state: present
+
+    - name: "tuxedo: packages"
+      package:
+        name:
+          - tuxedo-control-center
+          - tuxedo-drivers
+          - tuxedo-tomte
+        state: present

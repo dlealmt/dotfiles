@@ -1,0 +1,56 @@
+---
+- name: Neovim
+  hosts: localhost
+  vars:
+    base_dir: "{{ ansible_env.HOME }}/sys/neovim"
+
+  tasks:
+    - name: "Neovim: clean"
+      loop:
+        - "build"
+        - "package"
+      ansible.builtin.file:
+        dest: "{{ base_dir }}/{{ item }}"
+        state: absent
+
+    - name: "Neovim: pull"
+      ansible.builtin.git:
+        repo: https://github.com/neovim/neovim.git
+        bare: true
+        dest: "{{ base_dir }}/upstream"
+
+    - name: "Neovim: extract"
+      ansible.builtin.git:
+        repo: "{{ base_dir }}/upstream"
+        dest: "{{ base_dir }}/build"
+
+    - name: "Neovim: make"
+      community.general.make:
+        chdir: "{{ base_dir }}/build"
+        params:
+          CMAKE_BUILD_TYPE: RelWithDebInfo 
+          CMAKE_INSTALL_PREFIX: "{{ base_dir }}/package"
+
+    - name: "Neovim: install"
+      community.general.make:
+        target: install
+        chdir: "{{ base_dir }}/build"
+
+    - name: "Neovim: link"
+      loop:
+        - src: "{{ base_dir }}/package"
+          path: "bin/nvim"
+          dest: ".local"
+        - src: "{{ base_dir }}/package"
+          path: "share/icons/hicolor/128x128/apps/nvim.png"
+          dest: ".local"
+        - src: "{{ base_dir }}/files"
+          path: "share/applications/nvim.desktop"
+          dest: ".local"
+        - src: "{{ base_dir }}/files"
+          path: "config"
+          dest: ".config"
+      ansible.builtin.file:
+        src: "{{ item.src }}/{{ item.path }}"
+        dest: "{{ ansible_env.HOME }}/{{ item.dest }}/{{ item.path }}"
+        state: link

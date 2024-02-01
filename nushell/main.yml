@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  tasks:
+    - name: "nushell: repo"
+      become: true
+      community.general.zypper_repository:
+        repo: "https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed/shells.repo"
+        runrefresh: true
+        state: present
+
+    - name: "nushell: packages"
+      become: true
+      package:
+        name: nushell
+        state: present
+
+    - name: "nushell: config"
+      ansible.builtin.file:
+        src: "{{ ansible_env.HOME }}/sys/nushell/files" 
+        dest: "{{ ansible_env.HOME }}/.config/nushell"
+        state: link

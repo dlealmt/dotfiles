@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: "carapace: download"
+      unarchive:
+        src: "https://github.com/rsteube/carapace-bin/releases/download/v0.29.1/carapace-bin_linux_amd64.tar.gz"
+        mode: "0700"
+        dest: /tmp
+        remote_src: true
+
+    - name: "carapace: install"
+      copy:
+        src: /tmp/carapace
+        mode: "0700"
+        dest: "{{ ansible_env.HOME }}/local/bin/carapace"

@@ -1,0 +1,55 @@
+  return {
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "nushell/tree-sitter-nu",
+    },
+    main = "nvim-treesitter.configs",
+    opts = {
+      auto_install = true,
+      ensure_installed = {
+        "bash",
+        "cpp",
+        "css",
+        "clojure",
+        "embedded_template",
+        "html",
+        "javascript",
+        "jsonc",
+        "lua",
+        "markdown_inline",
+        "nu",
+        "query",
+        "regex",
+        "ruby",
+        "vim",
+        "yaml",
+      },
+      autotag = { enable = true },
+      endwise = { enable = true },
+      highlight = { enable = true },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gS",
+          node_incremental = "+",
+          scope_incremental = "s",
+          node_decremental = "-",
+        },
+      },
+      indent = { enable = true },
+      matchup = { enable = true },
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["aa"] = "@parameter.outer",
+          ["ai"] = "@parameter.inner",
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+        },
+        include_surrounding_whitespace = true
+      },
+    },
+  }

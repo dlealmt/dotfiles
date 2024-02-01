@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  become: true
+
+  tasks:
+    - name: "brave: repo key"
+      rpm_key:
+        key: "https://brave-browser-rpm-release.s3.brave.com/brave-core.asc" 
+        state: present
+
+    - name: "brave: repo"
+      community.general.zypper_repository:
+        repo: "https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo"
+        runrefresh: true
+        state: present
+
+    - name: "brave: packages"
+      package:
+        name: brave-browser
+        state: present

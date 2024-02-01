@@ -1,0 +1,132 @@
+(defcfg
+  concurrent-tap-hold yes
+  log-layer-changes no)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias
+  bs (tap-hold 200 200 bspc (layer-while-held desk))
+  a (tap-hold 200 200 a lmet)
+  s (tap-hold 200 200 s lctl)
+  d (tap-hold 200 200 d lalt)
+  f (tap-hold 200 200 f lsft)
+  g (tap-hold 200 200 g (layer-while-held sym))
+
+  h (tap-hold 200 200 h (layer-while-held sym))
+  j (tap-hold 200 200 j rsft)
+  k (tap-hold 200 200 k lalt)
+  l (tap-hold 200 200 l rctl)
+  sc (tap-hold 200 200 ; (layer-while-held desk))
+  gv (tap-hold 200 200 ' (layer-while-held desk))
+
+  alt (tap-hold 200 200 esc (layer-while-held num))
+  nav (tap-hold 200 200 spc (layer-while-held nav))
+)
+
+(deflayer qwerty
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  bspc @a   @s   @d   @f   @g   @h   @j   @k   @l   @sc  @gv  ret
+  grv  z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl ralt @alt           @nav           ret rmet rctl
+)
+
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    mrgt mmid mlft _    _    mlft mmid mrgt _    _    _    _
+  _    _    @mml @mmu @mmd @mmr left down up   rght _    _    _
+  @x   _    @mwl @mwu @mwd @mwr home pgdn pgup end  _    _
+  lrld _    _              _              _    _    _
+)
+
+(defalias
+  pvw A-S-tab 
+  nxw A-tab 
+
+  run M-spc
+
+  ldt C-M-left
+  rdt C-M-rght
+
+  ala M-1
+  brv M-2
+  td  M-3
+  mus M-4
+  yt  M-5
+  sck M-6
+  dsc M-7
+  wha M-8
+
+  fit M-right
+)
+
+(deflayer desk
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    @ala @brv @td  _    _    _    _    _    _    _    _    _
+  _    @run @mus @yt  @sck _    @lft @dwn @up  @rgt _    _    _
+  _    _    @dsc @wha _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+(defalias
+  clw A-f4
+  til M-left
+  tir M-rght
+)
+
+(defalias
+  mwu (mwheel-up 50 120)
+  mwd (mwheel-down 50 120)
+  mwl (mwheel-left 50 120)
+  mwr (mwheel-right 50 120)
+
+  mmu (movemouse-accel-up 50 2000 1 200)
+  mmd (movemouse-accel-down 50 2000 1 200)
+  mml (movemouse-accel-left 50 2000 1 200)
+  mmr (movemouse-accel-right 50 2000 1 200)
+
+  x (layer-switch x)
+)
+
+(deflayer sym
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  _    _    _
+  _    _    _    _    -    S--  S--  -    =    [    ]    S-'  S-\
+  S-`  _    _    _    _    _    _    _    +    S-[  S-]  _
+  _    _    _              _              _    _    _
+)
+
+(deflayer num
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    1    2    3    4    5    6    7    8    9    0    _    _    _
+  _    _    _    _    _    _    _    4    5    6    _    _    _
+  _    _    _    _    _    _    _    1    2    3    _    _
+  _    _    _              _              _    _    _
+)
+
+(defalias
+  rst (layer-switch qwerty))
+
+(deflayer x
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  @rst XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX             XX             XX   XX   XX
+)
+
+(deflayer _template
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+# vim:ft=lisp
