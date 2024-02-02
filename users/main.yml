@@ -1,0 +1,91 @@
+---
+- hosts: localhost
+  become: true
+
+  tasks:
+    - name: "system: plugdev (oryx)"
+      group:
+        name: plugdev
+
+    - name: "system: me"
+      user:
+        name: david
+        group: david
+        groups:
+          - docker
+          - plugdev
+          - systemd-journal
+        shell: "/usr/bin/fish"
+        state: present
+
+    - name: "system: patterns"
+      community.general.zypper:
+        name:
+          - devel_basis
+        type: pattern
+        state: latest
+
+    - name: "system: nopatterns"
+      community.general.zypper:
+        name:
+          - games
+          - imaging
+          - office
+          - gnome_games
+          - x11_enhanced
+          - x11_yast
+        type: pattern
+        state: absent
+
+    - name: "system: packages"
+      package:
+        name:
+          - bat
+          - chromium
+          - direnv
+          - docker
+          - fd
+          - fonts-config
+          - geary
+          - gh
+          - git
+          - git-delta
+          - gnome-calendar
+          - go
+          - google-noto-coloremoji-fonts
+          - google-noto-music-fonts
+          - google-noto-sans-fonts
+          - google-noto-serif-fonts
+          - kitty
+          - kitty-shell-integration
+          - kitty-terminfo
+          - nushell
+          - ripgrep
+          - rustup
+          - wl-clipboard
+          - zoxide
+        state: present
+
+    - name: "system: flatpaks"
+      community.general.flatpak:
+        name:
+          - com.slack.Slack
+          - com.discordapp.Discord
+          - com.bitwarden.desktop
+
+    - name: "system: config"
+      become: true
+      copy:
+        src: etc/
+        dest: /etc
+
+    - name: "system: units"
+      loop:
+        - name: keyd
+          state: restarted
+        - name: docker 
+          state: started
+      systemd_service:
+        name: "{{ item.name }}"
+        enabled: true
+        state: "{{ item.state }}"
